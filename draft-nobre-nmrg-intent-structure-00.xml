@@ -78,7 +78,7 @@
     </author>
 
 
-    <date month="October" year="2020" />
+    <date month="February" year="2023" />
 
     <!-- If the month and year are both specified and are the current ones, xml2rfc will fill 
          in the current day for you. If only the current year is specified, xml2rfc will fill 
@@ -107,13 +107,35 @@
          keywords will be used for the search engine. -->
 
     <abstract>
-      <t>This document </t>
+      <t> 
+Intent-Based Networking is an approach to operate a network through the use of an abstract, high-level policy. 
+An intent-based management system is composed of several components. One of such components is an engine to translate the intents into the network configuration.
+In this context, this engine must be able to parse network intents, given a defined structure. 
+This document mostly discusses the structure of network intents as well as associated concepts. 
+The aim is to provide a foundation for intent-related research and development. </t>
       </abstract>
   </front>
 
   <middle>
     <section title="Introduction">
-      <t>The Internet </t>
+      <t>  
+      <!-- 
+       The vision of intent-based networks has attracted a lot of attention
+   because it promises to simplify the management of networks by human
+   operators.  This is done by simply specifying what should happen on
+   the network without giving any instructions on how to do it.  This
+   promise caused many researcher-led activities and telecom companies
+   to start researching this new vision and many Standards Development
+   Organizations (SDOs) to propose different intent frameworks.
+
+   This document proposes an intent classification methodology and an
+   intent taxonomy.  The scope of these proposals is to ensure a common
+   understanding in the research community in terms of what the intent
+   users, intent types, or intent solutions, etc., are for specific
+   scenarios that are being considered. 
+   -->
+
+   </t>
     </section>
   </middle>
 
