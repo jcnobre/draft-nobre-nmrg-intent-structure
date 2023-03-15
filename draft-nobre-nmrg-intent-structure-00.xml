@@ -119,6 +119,11 @@ The aim is to provide a foundation for intent-related research and development. 
   <middle>
     <section title="Introduction">
       <t>  
+	An intent-based management system must be able to parse network intents, given a defined structure, in a way that it can be easily automated the translation among customer expectation and configuration needs at provide side to accomplish those expectations.
+
+	This document overviews potential structure of intents as departing point for use within NMRG activities on intents.
+      
+	      
       <!-- 
        The vision of intent-based networks has attracted a lot of attention
    because it promises to simplify the management of networks by human
@@ -137,6 +142,59 @@ The aim is to provide a foundation for intent-related research and development. 
 
    </t>
     </section>
+	  
+	  General structure of intents
+The activities around intent-based networking have been recently explored by different SDOs, as for instance 3GPP and ETSI ZSM. These SDOs have produced some documents where intent structure is investigated.
+For instance, ETSI ZSM [RefZSM] describes a declarative model based on information object classes. Five classes are defined:
+five types of information objects are required - intent,
+Intent, which includes a list of one or more intentExpectations to be achieved
+intentExpectation, which declares the final objective of the customer with the intent
+IntentTarget, which describes the desired outcome of the intent, and that includes for a given targeted parameter both the KPI for that target and any applicable context
+Context, represented by a tuple of < attribute, condition, value range >, which imposes constraints to the targets 
+FulfillmentInfo, which indicates the state of the intent
+In the case of 3GPP, a similar structure is defined in [Ref3GPP]. Object classes are defined in the same manner to accommodate the customers intents.
+For NMRG no initial structure has been defined yet. Considering the fact that the underlay network, using IETF-based technologies, supports services defined in other SDOs, it seems reasonable to assume a similar structure also in NMRG and explore its suitability in the context of IETF. Thus adaptations to the particularities of IETF could be expected in this exercise.
+It is interesting to mention that the object classes defined above allows to nest classes in the different levels. For instance, an Intent can nest various intentExpectations, each of them nesting different intentTargets, and so on.
+
+	  Basic example of connectivity service
+As a basic example of a simple connectivity service can illustrate a possible use of the referred intent structure. Considering a scenario where connectivity between different edge sites could be needed, such connectivity can be expected to be performed according to some SLOs. As characteristics of that connectivity service, it could be expected to receive from the customer inputs about:
+Endpoints location
+Connectivity matrix
+Service duration
+SLOs
+etc	
+With this in mind a possible intent structure could be the following:
+IntentExpectation – “Communication Service”
+ObjectType – “Connectivity”
+ObjectContext – “edgeEndPoints” 
+IntentTarget – “SLO”
+ObjectStateAttribute – “Bandwidth”
+TargetCondition – “is at least”
+TargetValueRange – “100 Mbps”
+TargetContext – “99,9%”
+IntentTarget – “SLO”
+ObjectStateAttribute – “Latency”
+TargetCondition – “is less tan”
+TargetValueRange – “10 ms”
+TargetContext – “90%”
+ExpectationContext – “connectivityType” 
+IntentContext – “edgeList”
+
+This central part (within the square lines) should be repeated for every set of edgeEndPoints requiring different connectivityType or particular SLOs (bandwidth, latency, etc). 
+
+Open points
+This initial version of the document proposes to explore valid structure of the intents to be used in NMRG. Apart from assessing the validity of the approach, other aspects are yet open points:
+Nest different kinds of intents for intent use cases in NMRG, (e.g. draft-contreras-nmrg-transport-slice-intent-06, draft-contreras-nmrg-interconnection-intents-03, etc).
+Assess that the structure is able to support the intent lifecycle defined in RFC9315
+Alignment with intent classification in RFC9316 
+
+
+References
+[RefZSM] ETSI GR ZSM 011, “Zero-touch network and Service Management (ZSM); Intent-driven autonomous networks; Generic aspects”, V1.1.1, February 2023.
+[Ref3GPP] 3GPP TS 28.312, “Management and orchestration; Intent driven management services for mobile networks”,V17.1.1, September 2022.
+
+	  
+	  
   </middle>
 
   <!--  *****BACK MATTER ***** -->
